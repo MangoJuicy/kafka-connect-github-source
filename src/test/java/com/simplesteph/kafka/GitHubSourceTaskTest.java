@@ -30,7 +30,6 @@ public class GitHubSourceTaskTest {
         return baseProps;
     }
 
-
     @Test
     public void test() throws UnirestException {
         gitHubSourceTask.config = new GitHubSourceConnectorConfig(initialConfig());
@@ -43,10 +42,10 @@ public class GitHubSourceTaskTest {
         if (httpResponse.getStatus() != 403) {
             assertEquals(200, httpResponse.getStatus());
             Set<String> headers = httpResponse.getHeaders().keySet();
-            assertTrue(headers.contains("ETag"));
-            assertTrue(headers.contains("X-RateLimit-Limit"));
-            assertTrue(headers.contains("X-RateLimit-Remaining"));
-            assertTrue(headers.contains("X-RateLimit-Reset"));
+            assertTrue(headers.contains("etag"));
+            assertTrue(headers.contains("X-Ratelimit-Limit"));
+            assertTrue(headers.contains("X-Ratelimit-Remaining"));
+            assertTrue(headers.contains("X-Ratelimit-Reset"));
             assertEquals(batchSize.intValue(), httpResponse.getBody().getArray().length());
             JSONObject jsonObject = (JSONObject) httpResponse.getBody().getArray().get(0);
             Issue issue = Issue.fromJson(jsonObject);
