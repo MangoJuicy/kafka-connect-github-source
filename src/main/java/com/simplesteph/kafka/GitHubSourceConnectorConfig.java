@@ -11,7 +11,9 @@ import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.util.Map;
 
-
+/**
+ * To read configurations from Connector setup.
+ */
 public class GitHubSourceConnectorConfig extends AbstractConfig {
 
     public static final String TOPIC_CONFIG = "topic";
